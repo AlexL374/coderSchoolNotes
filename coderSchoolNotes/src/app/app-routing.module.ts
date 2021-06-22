@@ -5,7 +5,7 @@ import { FinishedPageComponent } from './finished-page/finished-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: '\finished', component: FinishedPageComponent } //this doesn't work yet
+  { path: 'finished', component: FinishedPageComponent }
 ];
 
 @NgModule({

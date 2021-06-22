@@ -4,11 +4,29 @@
     <p class="title">Notes Generator</p>
     <!-- Include the date? -->
     <p>Platform used: </p>
+    <select id="platform">
+      <option value="">Website</option>
+      <option value="">Local Software</option>
+    </select>
     <p>Choose a website: </p>
+    <select id="website">
+      <option value="">Scratch</option>
+      <option value="">Trinket</option>
+      <option value="">Repl.it</option>
+    </select>
     <p>Language: </p>
+      <input type="text" id="language" name="language" value="">
     <p>Notes/Activity: </p>
+      <input type="text" name="" value="">
     <p>Topics Covered: </p>
+      <input type="text" name="" value="">
     <p>Homework</p>
+      <input type="text" name="" value="">
     <p>Next Lesson Goals:</p>
+      <input type="text" name="" value="">
+    <br>
+    <br>
+    <button type="button" name="button" (click)="submitButtonClick()">Submit</button>
+    <p id="finish"></p>
   </body>
 </html>

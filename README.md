@@ -13,6 +13,6 @@ Setting up Angular:
         Now the package.json contains 2 different versions of this @angular-devkit/build-angular, you can update it on both devices or 
 	just leave it?
 
-    Next, I generate a new component using the command "ng new component [component_name]". I had to then go into the app.routing in order to
+    Next, I generate a new component using the command "ng generate component [component_name]" or "ng g c [component_name]". I had to then go into the app.routing in order to
     change the path for the new component and also had to go into the app.component.html and switch out all of the starter/default code with 
     "<router-outlet></router-outlet>"

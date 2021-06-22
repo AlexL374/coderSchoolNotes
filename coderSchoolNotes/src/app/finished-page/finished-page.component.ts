@@ -10,6 +10,11 @@ export class FinishedPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  fill() {
+    (<HTMLElement>document.getElementById('output')).innerHTML = "this works?";
   }
 
 }
