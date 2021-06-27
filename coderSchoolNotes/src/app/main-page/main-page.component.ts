@@ -11,7 +11,20 @@ export class MainPageComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    console.log("starting")
+    (<HTMLInputElement>document.getElementById("language")).value = "Scratch";
+  }
+
+  changeWebsite() {
+    var website = (<HTMLSelectElement>document.getElementById("website")).selectedOptions[0].innerHTML;
+    if (website == "Scratch") {
+      (<HTMLInputElement>document.getElementById("language")).value = "Scratch";
+    }
+    else if (website == "Trinket") {
+      (<HTMLInputElement>document.getElementById("language")).value = "Python";
+    }
+    else if (website == "Repl.it") {
+      (<HTMLInputElement>document.getElementById("language")).value = "Python";
+    }
   }
 
   submitButtonClick() {
@@ -20,7 +33,6 @@ export class MainPageComponent implements OnInit {
     var websiteLink;
     if (website == "Scratch") {
       websiteLink = "www.scratch.mit.edu";
-      (<HTMLInputElement>document.getElementById("language")).value = "Scratch"; //when the options/select tag is changed, then we can edit this, similar to platforms and links
     }
     else if (website == "Trinket") {
       websiteLink = "www.trinket.io";
@@ -29,7 +41,10 @@ export class MainPageComponent implements OnInit {
       websiteLink = "www.repl.it";
     }
     var lang = (<HTMLInputElement>document.getElementById("language")).value;
-    var finalText = "Platform: " + platform + "<br>" + "Platform name: " + websiteLink + "<br>" + "Language: " + lang;
+    var notes = (<HTMLInputElement>document.getElementById("notes")).value;
+    var challenges = (<HTMLInputElement>document.getElementById("challenges")).value;
+    var next = (<HTMLInputElement>document.getElementById("next")).value;
+    var finalText = "Platform: " + platform + "<br>" + "Platform name: " + websiteLink + "<br>" + "Language: " + lang + "<br><br>Notes: " + notes + "<br><br>Weekly Code Challenges: " + challenges + "<br><br>Next Lesson: " + next;
     (<HTMLParagraphElement>document.getElementById("finish")).innerHTML = finalText;
   }
 
