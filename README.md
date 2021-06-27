@@ -1,7 +1,6 @@
 # coderSchoolNotes
 
 theCoderSchool applet. built using angular. 
-also will have other apps, such as Hack-A-Thon camp Python, HTML, CSS, JS programs. 
 
 Setting up Angular:
     Can use the command "ng --version" to test whether Angular CLI is downloaded or not. 
