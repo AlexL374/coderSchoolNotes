@@ -1,6 +1,7 @@
 # coderSchoolNotes
 
 theCoderSchool applet. built using angular. 
+also will have other apps, such as Hack-A-Thon camp Python, HTML, CSS, JS programs. 
 
 Setting up Angular:
     Can use the command "ng --version" to test whether Angular CLI is downloaded or not. 
@@ -16,3 +17,5 @@ Setting up Angular:
     Next, I generate a new component using the command "ng generate component [component_name]" or "ng g c [component_name]". I had to then go into the app.routing in order to
     change the path for the new component and also had to go into the app.component.html and switch out all of the starter/default code with 
     "<router-outlet></router-outlet>"
+
+
