@@ -1,37 +1,234 @@
+* {
+  font-family: Inter;
+}
+
 ul {
   list-style-type: none;
   padding: 0px;
+  margin: 16px 0px 0px 0px;
 }
 
-a {
+button {
+
+  background-color: inherit;
+  border: none;
+  font-size: 20px;
+
   text-decoration: none;
   color: black;
+  opacity: 1;
+  transition: .2s;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: .5;
+  transition: .4s;
 }
 
 li {
   display: inline;
-  margin: 10px;
-  padding: 10px;
-  border-style: solid;
-  border-width: 1px;
+  margin: 20px;
+  padding: 0px 80px 0px 80px;
+}
+
+select {
+  border: none;
+  font-size: 18px;
+  margin: 10px 0px 10px 0px;
+}
+
+select:focus {
+  outline: none;
+}
+
+select:hover {
+  background: gray;
+}
+
+textarea {
+  resize: none;
+  padding: 5px;
 }
 
 .title {
   font-size: 35px;
   position: relative;
-  justify-content: center;
-  justify-self: center;
+  text-align: center;
+  margin: 20px 0px 20px 0px;
+  display: inline-block;
+}
+
+#tabs {
   text-align: center;
 }
 
-.type {
-  opacity: 0;
-  visibility: hidden;
+#container {
+  display: grid;
+  grid-template-areas:
+  'regular trial';
+  grid-template-columns: 50% 50%;
+  grid-auto-flow: row;
+  height: 95vh;
+}
+
+#form {
+  grid-area: regular;
+  position: relative;
+  text-align: center;
+  transition: 10s;
+}
+
+.all {
   display: none;
 }
 
-.type.active {
+#topicsList {
+  margin: 0px 0px 30px 0px;
+}
+
+#finishDiv {
+  grid-area: trial;
+  position: relative;
+  width: auto;
+  background-color: rgb(0, 242, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 10s;
+  min-height: 100vh;
+}
+
+.all.active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  display: inline-block;
+}
+
+#finish {
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  border-radius: 10px;
+}
+
+#finish:focus {
+  outline: none;
+}
+
+#username, #password, #language, #notes, #topics, #challenges, #next, #local {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 15px;
+  width: 500px;
+}
+
+#username:focus, #password:focus, #language:focus, #notes:focus, #topics:focus, #challenges:focus, #next:focus, #local:focus {
+  outline: none;
+}
+
+#username:focus::placeholder, #password:focus::placeholder, #language:focus::placeholder, #notes:focus::placeholder, #topics:focus::placeholder, #challenges:focus::placeholder, #next:focus::placeholder, #local:focus::placeholder {
+  /*color: transparent;*/
+  opacity: 0;
+  transition: all .3s;
+}
+
+#username::placeholder, #password::placeholder, #language::placeholder, #notes::placeholder, #topics::placeholder, #challenges::placeholder, #next::placeholder, #local::placeholder {
+  opacity: 1;
+  transition: all .3s;
+}
+
+.username_group, .password_group, .language_group, .notes_group, .topics_group, .challenges_group, .next_group, .local_group {
+  position: relative;
+  margin: 10px;
+  display: block;
+}
+
+.username_label, .password_label, .language_label, .notes_label, .topics_label, .challenges_label, .next_label, .local_label {
+  position: relative;
+  bottom: 22px;
+  opacity: 0;
+  visibility: hidden;
+  color: gray;
+  display: block;
+  font-size: 15px;
+  transition: bottom .3s;
+}
+
+.username_label {
+  right: 214px;
+}
+
+.password_label, .language_label {
+  right: 216px;
+}
+
+.notes_label {
+  bottom: 155px !important;
+  right: 200px;
+}
+
+.topics_label, {
+  right: 196px;
+}
+
+.local_label {
+  right: 197px;
+}
+
+.challenges_label {
+  bottom: 80px !important;
+  right: 212px;
+}
+
+.next_label {
+  bottom: 80px !important;
+  right: 185px;
+}
+
+#username:focus + .username_label,
+#password:focus + .password_label,
+#language:focus + .language_label,
+#notes:focus + .notes_label,
+#topics:focus + .topics_label,
+#challenges:focus + .challenges_label,
+#next:focus + .next_label,
+#local:focus + .local_label {
   opacity: 1;
   visibility: visible;
   display: block;
+  bottom: 52px;
+  transition: all .3s;
+}
+
+#notes:focus + .notes_label,
+#notes:not(:placeholder-shown) + .notes_label {
+  bottom: 179px !important;
+}
+
+#challenges:focus + .challenges_label,
+#challenges:not(:placeholder-shown) + .challenges_label,
+#next:focus + .next_label,
+#next:not(:placeholder-shown) + .next_label {
+  bottom: 109px !important;
+}
+
+#username:not(:placeholder-shown) + .username_label,
+#password:not(:placeholder-shown) + .password_label,
+#language:not(:placeholder-shown) + .language_label,
+#notes:not(:placeholder-shown) + .notes_label,
+#topics:not(:placeholder-shown) + .topics_label,
+#challenges:not(:placeholder-shown) + .challenges_label,
+#next:not(:placeholder-shown) + .next_label,
+#local:not(:placeholder-shown) + .local_label {
+  opacity: 1;
+  visibility: visible;
+  display: block;
+  bottom: 52px;
+}
+
+.submit {
+  margin-bottom: 16px;
 }
