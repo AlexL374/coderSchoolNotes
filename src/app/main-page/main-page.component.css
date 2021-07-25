@@ -122,7 +122,7 @@ textarea {
   border-radius: 10px;
   padding: 5px;
   font-size: 15px;
-  width: 500px;
+  width: 70%;
 }
 
 #username:focus, #password:focus, #language:focus, #notes:focus, #topics:focus, #challenges:focus, #next:focus, #local:focus {
@@ -152,40 +152,23 @@ textarea {
   opacity: 0;
   visibility: hidden;
   color: gray;
-  display: block;
+  display: inline-block;
   font-size: 15px;
   transition: bottom .3s;
-}
-
-.username_label {
-  right: 214px;
-}
-
-.password_label, .language_label {
-  right: 216px;
+  width: 70%;
+  text-align: left;
 }
 
 .notes_label {
   bottom: 155px !important;
-  right: 200px;
-}
-
-.topics_label, {
-  right: 196px;
-}
-
-.local_label {
-  right: 197px;
 }
 
 .challenges_label {
   bottom: 80px !important;
-  right: 212px;
 }
 
 .next_label {
   bottom: 80px !important;
-  right: 185px;
 }
 
 #username:focus + .username_label,
@@ -198,7 +181,7 @@ textarea {
 #local:focus + .local_label {
   opacity: 1;
   visibility: visible;
-  display: block;
+  display: inline-block;
   bottom: 52px;
   transition: all .3s;
 }
@@ -225,7 +208,7 @@ textarea {
 #local:not(:placeholder-shown) + .local_label {
   opacity: 1;
   visibility: visible;
-  display: block;
+  display: inline-block;
   bottom: 52px;
 }
 
