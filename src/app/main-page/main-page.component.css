@@ -8,8 +8,8 @@ ul {
   margin: 16px 0px 0px 0px;
 }
 
-button {
-
+.tab,
+.submit {
   background-color: inherit;
   border: none;
   font-size: 20px;
@@ -20,10 +20,11 @@ button {
   transition: .2s;
 }
 
-button:hover {
+.tab:hover,
+.submit:hover {
   cursor: pointer;
   opacity: .5;
-  transition: .4s;
+  transition: .3s;
 }
 
 li {
@@ -76,7 +77,6 @@ textarea {
   grid-area: regular;
   position: relative;
   text-align: center;
-  transition: 10s;
 }
 
 .all {
@@ -89,13 +89,13 @@ textarea {
 
 #finishDiv {
   grid-area: trial;
-  position: relative;
-  width: auto;
+  position: fixed;
+  left: 50%;
+  width: 50%;
   background-color: rgb(0, 242, 0);
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 10s;
   min-height: 100vh;
 }
 
@@ -111,6 +111,7 @@ textarea {
   font-weight: 500;
   color: black;
   border-radius: 10px;
+  width: 93%;
 }
 
 #finish:focus {
@@ -140,7 +141,7 @@ textarea {
   transition: all .3s;
 }
 
-.username_group, .password_group, .language_group, .notes_group, .topics_group, .challenges_group, .next_group, .local_group {
+#username_group, #password_group, #language_group, #notes_group, #topics_group, #challenges_group, #next_group, #local_group {
   position: relative;
   margin: 10px;
   display: block;
@@ -214,4 +215,71 @@ textarea {
 
 .submit {
   margin-bottom: 16px;
+}
+
+#platform-website-container.website {
+  justify-self: center;
+  display: grid;
+  grid-template-areas:
+  'space platform language';
+  grid-template-columns: 20% 30% 30%;
+}
+
+#platform-container {
+  grid-area: platform;
+}
+
+#website-container {
+  grid-area: language;
+}
+
+#website-button,
+#platform-button {
+  border: 2px solid black;
+  border-radius: 7px;
+  position: relative;
+  background-color: inherit;
+  font-size: 20px;
+}
+
+#website-button:hover,
+#platform-button:hover {
+  cursor: pointer;
+}
+
+.dropdown-item {
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
+}
+
+.dropdown-item:visited {
+  color: black;
+}
+
+.dropdown-item:hover {
+  background-color: rgb(219, 219, 219);
+}
+
+.dropdown-content {
+  opacity: 0;
+  visibility: hidden;
+  display: block;
+  transition: all .3s;
+  text-align: center;
+  justify-content: center;
+}
+
+.dropdown-content:hover {
+  opacity: 1;
+  visibility: visible;
+  transition: all .3s;
+}
+
+#website-button:hover + .dropdown-content,
+#platform-button:hover + .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transition: all .3s;
 }

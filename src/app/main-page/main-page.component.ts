@@ -20,29 +20,26 @@ format;
   ngOnInit(): void {
     (<HTMLInputElement>document.getElementById("language")).value = "Scratch";
     (<HTMLButtonElement>document.getElementById("regular")).click();
-    this.changePlatform();
+    this.changePlatform("Website");
     console.log(this.format);
   }
 
-  changeWebsite() {
-    var website = (<HTMLSelectElement>document.getElementById("website")).selectedOptions[0].innerHTML;
-    if (website == "Scratch") {
-      (<HTMLInputElement>document.getElementById("language")).value = "Scratch";
+  changeWebsite(name: string) {
+    (<HTMLElement>document.getElementById("website-button")).innerHTML = name;
+    if (name == "Scratch") {
+      (<HTMLInputElement>document.getElementById("language")).value = name;
     }
-    else if (website == "Trinket") {
-      (<HTMLInputElement>document.getElementById("language")).value = "Python";
-    }
-    else if (website == "Repl.it") {
+    else if (name == "Trinket" || name == "Repl.it") {
       (<HTMLInputElement>document.getElementById("language")).value = "Python";
     }
   }
 
   submitButtonClickRegular() {
     //first check that all required inputs are there
-    var platform = (<HTMLSelectElement>document.getElementById("platform")).selectedOptions[0].innerHTML;
+    var platform = (<HTMLElement>document.getElementById("platform-button")).innerHTML;
     var websiteLink;
     if (platform == "Website") {
-      var website = (<HTMLSelectElement>document.getElementById("website")).selectedOptions[0].innerHTML;
+      var website = (<HTMLElement>document.getElementById("website-button")).innerHTML;
       if (website == "Scratch") {
         websiteLink = "www.scratch.mit.edu";
       }
@@ -73,10 +70,10 @@ format;
   }
 
   submitButtonClickTrial() {
-    var platform = (<HTMLSelectElement>document.getElementById("platform")).selectedOptions[0].innerHTML;
+    var platform = (<HTMLElement>document.getElementById("platform-button")).innerHTML;
     var websiteLink;
     if (platform == "Website") {
-      var website = (<HTMLSelectElement>document.getElementById("website")).selectedOptions[0].innerHTML;
+      var website = (<HTMLElement>document.getElementById("website-button")).innerHTML;
       if (website == "Scratch") {
         websiteLink = "www.scratch.mit.edu";
       }
@@ -117,15 +114,28 @@ format;
     if (s == "regular") {
       (<HTMLElement>document.getElementById("form")).style.gridArea = "regular";
       (<HTMLElement>document.getElementById("finishDiv")).style.gridArea = "trial";
+      //show username, password, homework, and next lesson goals
+      (<HTMLDivElement>document.getElementById("username_group")).style.height = "auto";
+      (<HTMLDivElement>document.getElementById("password_group")).style.height = "auto";
+      (<HTMLDivElement>document.getElementById("challenges_group")).style.height = "auto";
+      (<HTMLDivElement>document.getElementById("next_group")).style.height = "auto";
+      //set finishdiv to be on right side
+      (<HTMLDivElement>document.getElementById("finishDiv")).style.left = "50%";
     }
     else if (s == "trial") {
       (<HTMLElement>document.getElementById("form")).style.gridArea = "trial";
       (<HTMLElement>document.getElementById("finishDiv")).style.gridArea = "regular";
+      (<HTMLDivElement>document.getElementById("username_group")).style.height = "0px";
+      (<HTMLDivElement>document.getElementById("password_group")).style.height = "0px";
+      (<HTMLDivElement>document.getElementById("challenges_group")).style.height = "0px";
+      (<HTMLDivElement>document.getElementById("next_group")).style.height = "0px";
+      //set finishdiv to be on left side
+      (<HTMLDivElement>document.getElementById("finishDiv")).style.left = "0%";
     }
     //reset all elements
     (<HTMLElement>document.getElementById("finish")).innerHTML = "";
-    (<HTMLSelectElement>document.getElementById("platform")).value = "website";
-    (<HTMLSelectElement>document.getElementById("website")).value = "scratch";
+    (<HTMLSelectElement>document.getElementById("platform-button")).innerHTML = "Website";
+    (<HTMLSelectElement>document.getElementById("website-button")).innerHTML = "Scratch";
     (<HTMLInputElement>document.getElementById("username")).value = "";
     (<HTMLInputElement>document.getElementById("password")).value = "";
     (<HTMLInputElement>document.getElementById("language")).value = "";
@@ -138,7 +148,8 @@ format;
     }
     (<HTMLInputElement>document.getElementById("challenges")).value = "";
     (<HTMLInputElement>document.getElementById("next")).value = "";
-    this.changeWebsite();
+    this.changeWebsite("Scratch");
+
   }
 
   onEnter(e: KeyboardEvent) {
@@ -161,11 +172,10 @@ format;
     }
   }
 
-  changePlatform() {
-    var platform = (<HTMLSelectElement>document.getElementById("platform")).selectedOptions[0].innerHTML;
-    var web = (<HTMLElement>document.getElementById("website"));
+  changePlatform(platformName: string) {
+    var web = (<HTMLDivElement>document.getElementById("website-container"));
     var local = (<HTMLElement>document.getElementById("local_group"));
-    if (platform == "Website") {
+    if (platformName == "Website") {
       web.style.opacity = "1";
       web.style.visibility = "visible";
       web.style.height = "auto";
@@ -173,7 +183,7 @@ format;
       local.style.visibility = "hidden";
       local.style.height = "0px";
     }
-    else if (platform == "Local Software") {
+    else if (platformName == "Local Software") {
       web.style.opacity = "0";
       web.style.visibility = "hidden";
       web.style.height = "0px";
@@ -181,12 +191,13 @@ format;
       local.style.visibility = "visible";
       local.style.height = "auto";
     }
+    (<HTMLElement>document.getElementById("platform-button")).innerHTML = platformName;
   }
+
   @HostListener('window:scroll', ['$event'])
   moveWithScroll(e: Event) {
-    (<HTMLDivElement>document.getElementById("finishDiv"));
+    var d = (<HTMLDivElement>document.getElementById("finishDiv"));
+    console.log();
   }
-
-
 
 }
