@@ -23,7 +23,7 @@ ul {
 .tab:hover,
 .submit:hover {
   cursor: pointer;
-  opacity: .5;
+  text-shadow: 5px 5px 10px;
   transition: .3s;
 }
 
