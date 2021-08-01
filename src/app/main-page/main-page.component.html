@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <body>
-    
+
   <div id="container">
     <div id="form">
-      <ul id="tabs">
-        <li><button class="tab" id="regular" (click)="tabChange('regular')">Regular</button></li>
-        <li><button class="tab" id="trial" (click)="tabChange('trial')">Trial</button></li>
-      </ul>
+
       <p class="title">Note Generator</p>
-      <br>
       <!--<p class="all regular trial">Platform used:&nbsp;</p>-->
       <!-- <br>
       <select id="platform" (change)="changePlatform()" class="all regular trial">
         <option value="website" class="all regular trial">Website</option>
         <option value="local" class="all regular trial">Local Software</option>
       </select>-->
+      <ul id="tabs">
+        <li><button class="tab" id="regular" (click)="tabChange('regular')">Regular</button></li>
+        <li><button class="tab" id="trial" (click)="tabChange('trial')">Trial</button></li>
+      </ul>
+      <br>
       <div id="platform-website-container" class="website">
         <div id="platform-container">
           <button id="platform-button">Website</button>

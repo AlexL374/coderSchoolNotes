@@ -179,26 +179,7 @@ textarea {
 #topics:focus + .topics_label,
 #challenges:focus + .challenges_label,
 #next:focus + .next_label,
-#local:focus + .local_label {
-  opacity: 1;
-  visibility: visible;
-  display: inline-block;
-  bottom: 6vh;
-  transition: all .3s;
-}
-
-#notes:focus + .notes_label,
-#notes:not(:placeholder-shown) + .notes_label {
-  bottom: 20.5vh !important;
-}
-
-#challenges:focus + .challenges_label,
-#challenges:not(:placeholder-shown) + .challenges_label,
-#next:focus + .next_label,
-#next:not(:placeholder-shown) + .next_label {
-  bottom: 12.3vh !important;
-}
-
+#local:focus + .local_label,
 #username:not(:placeholder-shown) + .username_label,
 #password:not(:placeholder-shown) + .password_label,
 #language:not(:placeholder-shown) + .language_label,
@@ -210,7 +191,20 @@ textarea {
   opacity: 1;
   visibility: visible;
   display: inline-block;
-  bottom: 6vh;
+  bottom: 3.7em;
+  transition: all .3s;
+}
+
+#notes:focus + .notes_label,
+#notes:not(:placeholder-shown) + .notes_label {
+  bottom: 12.9em !important;
+}
+
+#challenges:focus + .challenges_label,
+#challenges:not(:placeholder-shown) + .challenges_label,
+#next:focus + .next_label,
+#next:not(:placeholder-shown) + .next_label {
+  bottom: 7.7em !important;
 }
 
 .submit {
