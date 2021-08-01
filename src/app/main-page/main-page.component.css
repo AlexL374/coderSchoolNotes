@@ -183,20 +183,20 @@ textarea {
   opacity: 1;
   visibility: visible;
   display: inline-block;
-  bottom: 52px;
+  bottom: 6vh;
   transition: all .3s;
 }
 
 #notes:focus + .notes_label,
 #notes:not(:placeholder-shown) + .notes_label {
-  bottom: 179px !important;
+  bottom: 20.5vh !important;
 }
 
 #challenges:focus + .challenges_label,
 #challenges:not(:placeholder-shown) + .challenges_label,
 #next:focus + .next_label,
 #next:not(:placeholder-shown) + .next_label {
-  bottom: 109px !important;
+  bottom: 12.3vh !important;
 }
 
 #username:not(:placeholder-shown) + .username_label,
@@ -210,7 +210,7 @@ textarea {
   opacity: 1;
   visibility: visible;
   display: inline-block;
-  bottom: 52px;
+  bottom: 6vh;
 }
 
 .submit {
