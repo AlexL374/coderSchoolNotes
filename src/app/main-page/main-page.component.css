@@ -60,10 +60,6 @@ textarea {
   display: inline-block;
 }
 
-#tabs {
-  text-align: center;
-}
-
 #container {
   display: grid;
   grid-template-areas:
@@ -71,6 +67,7 @@ textarea {
   grid-template-columns: 50% 50%;
   grid-auto-flow: row;
   height: 95vh;
+
 }
 
 #form {
@@ -92,7 +89,7 @@ textarea {
   position: fixed;
   left: 50%;
   width: 50%;
-  background-color: rgb(0, 242, 0);
+  /*background-image: linear-gradient(to right, white, #40ff45);*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,8 +145,8 @@ textarea {
 }
 
 .username_label, .password_label, .language_label, .notes_label, .topics_label, .challenges_label, .next_label, .local_label {
-  position: relative;
-  bottom: 22px;
+  position: absolute;
+  /*bottom: 22px;*/
   opacity: 0;
   visibility: hidden;
   color: gray;
@@ -158,6 +155,7 @@ textarea {
   transition: bottom .3s;
   width: 70%;
   text-align: left;
+  left: 15%;
 }
 
 .notes_label {
@@ -191,20 +189,20 @@ textarea {
   opacity: 1;
   visibility: visible;
   display: inline-block;
-  bottom: 3.7em;
+  /*bottom: 52px;*/
   transition: all .3s;
 }
 
 #notes:focus + .notes_label,
 #notes:not(:placeholder-shown) + .notes_label {
-  bottom: 12.9em !important;
+  bottom: 179px !important;
 }
 
 #challenges:focus + .challenges_label,
 #challenges:not(:placeholder-shown) + .challenges_label,
 #next:focus + .next_label,
 #next:not(:placeholder-shown) + .next_label {
-  bottom: 7.7em !important;
+  bottom: 109px !important;
 }
 
 .submit {
@@ -276,4 +274,27 @@ textarea {
   opacity: 1;
   visibility: visible;
   transition: all .3s;
+}
+
+.tab-name {
+  font-size: 25px;
+  right: 10%;
+  position: absolute;
+}
+
+.tab-name {
+  cursor: pointer;
+}
+
+#trial-tab-label {
+  opacity: 0;
+}
+
+#tab-checkbox {
+  display: none;
+}
+
+.not-active {
+  pointer-events: none;
+  cursor: default;
 }

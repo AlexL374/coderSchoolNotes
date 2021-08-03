@@ -5,17 +5,13 @@
   <div id="container">
     <div id="form">
 
-      <p class="title">Note Generator</p>
-      <!--<p class="all regular trial">Platform used:&nbsp;</p>-->
-      <!-- <br>
-      <select id="platform" (change)="changePlatform()" class="all regular trial">
-        <option value="website" class="all regular trial">Website</option>
-        <option value="local" class="all regular trial">Local Software</option>
-      </select>-->
-      <ul id="tabs">
-        <li><button class="tab" id="regular" (click)="tabChange('regular')">Regular</button></li>
-        <li><button class="tab" id="trial" (click)="tabChange('trial')">Trial</button></li>
-      </ul>
+      <div id="title-div">
+        <p class="title">Note Generator</p>
+        <input id="tab-checkbox" type="checkbox" (change)="changeTab()">
+        <label [@nextState]="tabState ? 'middle' : 'bottom'" id="regular-tab-label" class="tab-name" for="tab-checkbox">Regular</label>
+        <label [@nextState]="tabState ? 'bottom' : 'middle'" id="trial-tab-label" class="tab-name" for="tab-checkbox">Trial</label>
+      </div>
+
       <br>
       <div id="platform-website-container" class="website">
         <div id="platform-container">
@@ -38,13 +34,6 @@
         </div>
       </div>
 
-
-      <!--<select id="website" (change)="changeWebsite()" class="all regular trial">
-        <option value="scratch" class="all regular trial">Scratch</option>
-        <option value="trinket" class="all regular trial">Trinket</option>
-        <option value="repl" class="all regular trial">Repl.it</option>
-      </select>-->
-
       <div id="local_group">
         <input id="local" type="text" class="all regular trial" placeholder="Local Software">
         <label class="local_label" for="local">Local Software</label>
@@ -66,7 +55,6 @@
       </div>
 
       <div id="notes_group">
-        <!--<input type="text" id="notes" class="all regular trial" placeholder="Notes/Activity">-->
         <textarea id="notes" class="all regular trial" rows="8" cols="23" data-gramm_editor="false" placeholder="Notes/Activity"></textarea>
         <label for="notes" class="notes_label">Notes/Activity</label>
       </div>
@@ -81,7 +69,6 @@
       </ul>
 
       <div id="challenges_group">
-        <!-- <input type="text" id="challenges" class="all regular" placeholder="Homework"> -->
         <textarea id="challenges" class="all regular" rows="4" cols="23" data-gramm_editor="false" placeholder="Homework"></textarea>
         <label for="challenges" class="challenges_label">Homework</label>
       </div>

@@ -2,24 +2,59 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { HostListener } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  keyframes
+} from '@angular/animations';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css'],
-  providers: [DatePipe]
+  providers: [DatePipe],
+  animations: [
+    trigger('nextState', [
+      state('bottom', style({
+        top: '0%',
+        opacity: 0
+      })),
+      state('middle', style({
+        top: '3%',
+        opacity: 1,
+        textDecoration: 'underline'
+      })),
+      transition('bottom => middle', [
+        animate('.6s', keyframes([
+          style({ top: '0%', opacity: 0, offset: 0}),
+          style({ top: '3%', opacity: 1, offset: 1})
+        ]))
+      ]),
+      transition('middle => bottom', [
+        animate('.6s', keyframes([
+          style({ top: '6%', opacity: 0, offset: 0.99 }),
+          style({ top: '0%', offset: 1 })
+        ]))
+      ])
+    ])
+  ]
 })
+
 export class MainPageComponent implements OnInit {
 
 myDate: Date = new Date(Date.now());
 format;
+tabState = true;
   constructor(private router: Router, private datePipe: DatePipe) {
     this.format = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
    }
 
   ngOnInit(): void {
     (<HTMLInputElement>document.getElementById("language")).value = "Scratch";
-    (<HTMLButtonElement>document.getElementById("regular")).click();
+    this.tabChange('regular');
     this.changePlatform("Website");
     console.log(this.format);
   }
@@ -106,31 +141,18 @@ format;
         elements[x].classList.add("active");
       }
     }
-
-    (<HTMLDivElement>document.getElementById("regular")).style.color = "black";
-    (<HTMLDivElement>document.getElementById("trial")).style.color = "black";
-    (<HTMLDivElement>document.getElementById(s)).style.color = "#4cfc55";
-    //(<HTMLDivElement>document.getElemenstByClassName(s)).classList.add("active");
     if (s == "regular") {
-      (<HTMLElement>document.getElementById("form")).style.gridArea = "regular";
-      (<HTMLElement>document.getElementById("finishDiv")).style.gridArea = "trial";
       //show username, password, homework, and next lesson goals
       (<HTMLDivElement>document.getElementById("username_group")).style.height = "auto";
       (<HTMLDivElement>document.getElementById("password_group")).style.height = "auto";
       (<HTMLDivElement>document.getElementById("challenges_group")).style.height = "auto";
       (<HTMLDivElement>document.getElementById("next_group")).style.height = "auto";
-      //set finishdiv to be on right side
-      (<HTMLDivElement>document.getElementById("finishDiv")).style.left = "50%";
     }
     else if (s == "trial") {
-      (<HTMLElement>document.getElementById("form")).style.gridArea = "trial";
-      (<HTMLElement>document.getElementById("finishDiv")).style.gridArea = "regular";
       (<HTMLDivElement>document.getElementById("username_group")).style.height = "0px";
       (<HTMLDivElement>document.getElementById("password_group")).style.height = "0px";
       (<HTMLDivElement>document.getElementById("challenges_group")).style.height = "0px";
       (<HTMLDivElement>document.getElementById("next_group")).style.height = "0px";
-      //set finishdiv to be on left side
-      (<HTMLDivElement>document.getElementById("finishDiv")).style.left = "0%";
     }
     //reset all elements
     (<HTMLElement>document.getElementById("finish")).innerHTML = "";
@@ -150,6 +172,20 @@ format;
     (<HTMLInputElement>document.getElementById("next")).value = "";
     this.changeWebsite("Scratch");
 
+  }
+
+  changeTab() {
+    this.tabState = !this.tabState;
+    (<HTMLElement>document.getElementById("title-div")).classList.add("not-active");
+    setTimeout(function() {
+      (<HTMLElement>document.getElementById("title-div")).classList.remove("not-active");
+    }, 550);
+    if (!this.tabState) {
+      this.tabChange("trial");
+    }
+    else {
+      this.tabChange("regular");
+    }
   }
 
   onEnter(e: KeyboardEvent) {
