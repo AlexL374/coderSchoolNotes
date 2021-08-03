@@ -8,11 +8,11 @@ ul {
   margin: 16px 0px 0px 0px;
 }
 
-.tab,
 .submit {
   background-color: inherit;
   border: none;
   font-size: 20px;
+  font-weight: 500;
 
   text-decoration: none;
   color: black;
@@ -20,7 +20,6 @@ ul {
   transition: .2s;
 }
 
-.tab:hover,
 .submit:hover {
   cursor: pointer;
   text-shadow: 5px 5px 10px;
@@ -58,7 +57,6 @@ textarea {
   'regular trial';
   grid-template-columns: 50% 50%;
   grid-auto-flow: row;
-  /*background-color: #90ee90;*/
   min-height: 100vh;
 }
 
@@ -66,7 +64,7 @@ textarea {
   grid-area: regular;
   position: relative;
   text-align: center;
-  /*background-image: linear-gradient(to left, white, #90ee90);*/
+  background-color: #90ee90;
 }
 
 .all {
@@ -242,6 +240,7 @@ textarea {
   position: relative;
   background-color: inherit;
   font-size: 20px;
+  font-weight: 500;
 }
 
 #website-button:hover,
@@ -254,6 +253,7 @@ textarea {
   display: inline-block;
   padding: 5px 5px 5px 5px;
   border-radius: 5px;
+  color: black;
 }
 
 .dropdown-item:visited {
@@ -261,8 +261,8 @@ textarea {
 }
 
 .dropdown-item:hover {
-  /*background-color: rgb(219, 219, 219);*/
-  background-color: white;
+  text-shadow: 5px 5px 10px;
+  transition: .3s;
 }
 
 .dropdown-content {
@@ -289,12 +289,10 @@ textarea {
 
 .tab-name {
   font-size: 25px;
+  font-weight: 500;
   right: 10%;
   position: absolute;
   margin-top: -1%;
-}
-
-.tab-name {
   cursor: pointer;
 }
 
