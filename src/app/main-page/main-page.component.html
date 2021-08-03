@@ -6,13 +6,12 @@
     <div id="form">
 
       <div id="title-div">
-        <p class="title">Note Generator</p>
+
         <input id="tab-checkbox" type="checkbox" (change)="changeTab()">
         <label [@nextState]="tabState ? 'middle' : 'bottom'" id="regular-tab-label" class="tab-name" for="tab-checkbox">Regular</label>
         <label [@nextState]="tabState ? 'bottom' : 'middle'" id="trial-tab-label" class="tab-name" for="tab-checkbox">Trial</label>
       </div>
 
-      <br>
       <div id="platform-website-container" class="website">
         <div id="platform-container">
           <button id="platform-button">Website</button>
@@ -81,8 +80,11 @@
       <button type="button" name="button" (click)="submitButtonClickRegular()" class="all regular submit">Submit</button>
       <button type="button" name="button" (click)="submitButtonClickTrial()" class="all trial submit">Submit</button>
     </div>
-    <div id="finishDiv">
-      <textarea id="finish" rows="30" cols="80"></textarea>
+    <div id="right">
+      <p class="title">Note Generator</p>
+      <div class="finishDiv">
+        <textarea id="finish" rows="30" cols="80"></textarea>
+      </div>
     </div>
   </div>
 

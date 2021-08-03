@@ -52,14 +52,6 @@ textarea {
   padding: 5px;
 }
 
-.title {
-  font-size: 35px;
-  position: relative;
-  text-align: center;
-  margin: 20px 0px 20px 0px;
-  display: inline-block;
-}
-
 #container {
   display: grid;
   grid-template-areas:
@@ -67,13 +59,15 @@ textarea {
   grid-template-columns: 50% 50%;
   grid-auto-flow: row;
   height: 95vh;
-
+  background-color: #90ee90;
+  min-height: 100vh;
 }
 
 #form {
   grid-area: regular;
   position: relative;
   text-align: center;
+  /*background-image: linear-gradient(to left, white, #90ee90);*/
 }
 
 .all {
@@ -84,23 +78,34 @@ textarea {
   margin: 0px 0px 30px 0px;
 }
 
-#finishDiv {
-  grid-area: trial;
-  position: fixed;
-  left: 50%;
-  width: 50%;
-  /*background-image: linear-gradient(to right, white, #40ff45);*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
 .all.active {
   position: relative;
   opacity: 1;
   visibility: visible;
   display: inline-block;
+}
+
+#right {
+  text-align: center;
+}
+
+.title {
+  font-size: 40px;
+  position: relative;
+  margin: 3% 0px 10% 0px;
+  font-weight: 600;
+}
+
+#finishDiv {
+  grid-area: trial;
+  position: fixed;
+  left: 50%;
+  width: 50%;
+  /*background-image: linear-gradient(to right, white, #90ee90);*/
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  display: flex;
 }
 
 #finish {
@@ -109,6 +114,7 @@ textarea {
   color: black;
   border-radius: 10px;
   width: 93%;
+  border: 2px solid black;
 }
 
 #finish:focus {
@@ -121,6 +127,7 @@ textarea {
   padding: 5px;
   font-size: 15px;
   width: 70%;
+  margin-bottom: 1.5%;
 }
 
 #username:focus, #password:focus, #language:focus, #notes:focus, #topics:focus, #challenges:focus, #next:focus, #local:focus {
@@ -146,28 +153,29 @@ textarea {
 
 .username_label, .password_label, .language_label, .notes_label, .topics_label, .challenges_label, .next_label, .local_label {
   position: absolute;
-  /*bottom: 22px;*/
   opacity: 0;
   visibility: hidden;
-  color: gray;
+  color: black;
   display: inline-block;
   font-size: 15px;
-  transition: bottom .3s;
+  transition: .3s;
+  bottom: 55%;
   width: 70%;
   text-align: left;
   left: 15%;
 }
 
 .notes_label {
-  bottom: 155px !important;
+  bottom: 86% !important;
+  /*opacity: 1;
+  visibility: visible;*/
 }
 
-.challenges_label {
-  bottom: 80px !important;
-}
-
+.challenges_label,
 .next_label {
-  bottom: 80px !important;
+  bottom: 80% !important;
+  /*opacity: 1;
+  visibility: visible;*/
 }
 
 #username:focus + .username_label,
@@ -188,21 +196,21 @@ textarea {
 #local:not(:placeholder-shown) + .local_label {
   opacity: 1;
   visibility: visible;
-  display: inline-block;
-  /*bottom: 52px;*/
+  display: block;
+  bottom: 100%;
   transition: all .3s;
 }
 
 #notes:focus + .notes_label,
 #notes:not(:placeholder-shown) + .notes_label {
-  bottom: 179px !important;
+  bottom: 100% !important;
 }
 
 #challenges:focus + .challenges_label,
 #challenges:not(:placeholder-shown) + .challenges_label,
 #next:focus + .next_label,
 #next:not(:placeholder-shown) + .next_label {
-  bottom: 109px !important;
+  bottom: 100% !important;
 }
 
 .submit {
@@ -215,6 +223,7 @@ textarea {
   grid-template-areas:
   'space platform language';
   grid-template-columns: 20% 30% 30%;
+  margin-top: 3%;
 }
 
 #platform-container {
@@ -251,7 +260,8 @@ textarea {
 }
 
 .dropdown-item:hover {
-  background-color: rgb(219, 219, 219);
+  /*background-color: rgb(219, 219, 219);*/
+  background-color: white;
 }
 
 .dropdown-content {
@@ -280,6 +290,7 @@ textarea {
   font-size: 25px;
   right: 10%;
   position: absolute;
+  margin-top: -1%;
 }
 
 .tab-name {
