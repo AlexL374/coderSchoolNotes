@@ -58,8 +58,7 @@ textarea {
   'regular trial';
   grid-template-columns: 50% 50%;
   grid-auto-flow: row;
-  height: 95vh;
-  background-color: #90ee90;
+  /*background-color: #90ee90;*/
   min-height: 100vh;
 }
 
@@ -87,6 +86,11 @@ textarea {
 
 #right {
   text-align: center;
+  background-color: #90ee90;
+  position: fixed;
+  left: 50%;
+  width: 50%;
+  min-height: 100vh;
 }
 
 .title {
@@ -98,9 +102,6 @@ textarea {
 
 #finishDiv {
   grid-area: trial;
-  position: fixed;
-  left: 50%;
-  width: 50%;
   /*background-image: linear-gradient(to right, white, #90ee90);*/
   justify-content: center;
   align-items: center;
