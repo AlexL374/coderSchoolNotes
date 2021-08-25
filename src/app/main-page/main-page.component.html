@@ -6,7 +6,6 @@
     <div id="form">
 
       <div id="title-div">
-
         <input id="tab-checkbox" type="checkbox" (change)="changeTab()">
         <label [@nextState]="tabState ? 'middle' : 'bottom'" id="regular-tab-label" class="tab-name" for="tab-checkbox">Regular</label>
         <label [@nextState]="tabState ? 'bottom' : 'middle'" id="trial-tab-label" class="tab-name" for="tab-checkbox">Trial</label>
@@ -14,21 +13,19 @@
 
       <div id="platform-website-container" class="website">
         <div id="platform-container">
-          <button id="platform-button">Website</button>
           <div class="dropdown-content">
-            <a href="#" class="dropdown-item" (click)="changePlatform('Website')">Website</a>
+            <a id="website-dropdown" class="dropdown-item platform" (click)="changePlatform('Website')">Website</a>
             <br>
-            <a href="#" class="dropdown-item" (click)="changePlatform('Local Software')">Local Software</a>
+            <a id="local-dropdown" class="dropdown-item platform" (click)="changePlatform('Local Software')">Local Software</a>
           </div>
         </div>
         <div id="website-container">
-            <button id="website-button">Scratch</button>
             <div class="dropdown-content">
-              <a href="#" class="dropdown-item" (click)="changeWebsite('Scratch')">Scratch</a>
+              <a id="scratch-dropdown" class="dropdown-item language" (click)="changeWebsite('Scratch')">Scratch</a>
               <br>
-              <a href="#" class="dropdown-item" (click)="changeWebsite('Trinket')">Trinket</a>
+              <a id="trinket-dropdown" class="dropdown-item language" (click)="changeWebsite('Trinket')">Trinket</a>
               <br>
-              <a href="#" class="dropdown-item" (click)="changeWebsite('Repl.it')">Repl.it</a>
+              <a id="repl-dropdown" class="dropdown-item language" (click)="changeWebsite('Repl.it')">Repl.it</a>
             </div>
         </div>
       </div>

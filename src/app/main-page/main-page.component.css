@@ -18,12 +18,14 @@ ul {
   color: black;
   opacity: 1;
   transition: .2s;
+  padding: 5px 5px;
 }
 
 .submit:hover {
   cursor: pointer;
-  text-shadow: 5px 5px 10px;
   transition: .3s;
+  background-color: #6fbd6f;
+  border-radius: 5px;
 }
 
 li {
@@ -72,7 +74,7 @@ textarea {
 }
 
 #topicsList {
-  margin: 0px 0px 30px 0px;
+  margin: 0px 0px 15px 0px;
 }
 
 .all.active {
@@ -100,7 +102,6 @@ textarea {
 
 #finishDiv {
   grid-area: trial;
-  /*background-image: linear-gradient(to right, white, #90ee90);*/
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -111,8 +112,8 @@ textarea {
   font-size: 16px;
   font-weight: 500;
   color: black;
-  border-radius: 10px;
-  width: 93%;
+  border-radius: 5px;
+  width: 90%;
   border: 2px solid black;
 }
 
@@ -122,7 +123,7 @@ textarea {
 
 #username, #password, #language, #notes, #topics, #challenges, #next, #local {
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 5px;
   font-size: 15px;
   width: 70%;
@@ -134,7 +135,6 @@ textarea {
 }
 
 #username:focus::placeholder, #password:focus::placeholder, #language:focus::placeholder, #notes:focus::placeholder, #topics:focus::placeholder, #challenges:focus::placeholder, #next:focus::placeholder, #local:focus::placeholder {
-  /*color: transparent;*/
   opacity: 0;
   transition: all .3s;
 }
@@ -166,15 +166,11 @@ textarea {
 
 .notes_label {
   bottom: 86% !important;
-  /*opacity: 1;
-  visibility: visible;*/
 }
 
 .challenges_label,
 .next_label {
   bottom: 80% !important;
-  /*opacity: 1;
-  visibility: visible;*/
 }
 
 #username:focus + .username_label,
@@ -236,7 +232,7 @@ textarea {
 #website-button,
 #platform-button {
   border: 2px solid black;
-  border-radius: 7px;
+  border-radius: 5px;
   position: relative;
   background-color: inherit;
   font-size: 20px;
@@ -254,20 +250,20 @@ textarea {
   padding: 5px 5px 5px 5px;
   border-radius: 5px;
   color: black;
+  transition: .3s;
+  font-size: 18px;
 }
 
 .dropdown-item:visited {
   color: black;
 }
 
-.dropdown-item:hover {
-  text-shadow: 5px 5px 10px;
+.dropdown-item.not-selected:hover {
   transition: .3s;
+  background-color: #6fbd6f;
 }
 
 .dropdown-content {
-  opacity: 0;
-  visibility: hidden;
   display: block;
   transition: all .3s;
   text-align: center;
@@ -278,6 +274,7 @@ textarea {
   opacity: 1;
   visibility: visible;
   transition: all .3s;
+  cursor: pointer;
 }
 
 #website-button:hover + .dropdown-content,
@@ -307,4 +304,8 @@ textarea {
 .not-active {
   pointer-events: none;
   cursor: default;
+}
+
+.selected {
+  font-size: 25px;
 }

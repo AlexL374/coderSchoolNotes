@@ -24,17 +24,16 @@ import {
       })),
       state('middle', style({
         top: '3%',
-        opacity: 1,
-        textDecoration: 'underline'
+        opacity: 1
       })),
       transition('bottom => middle', [
-        animate('.6s', keyframes([
+        animate('.5s', keyframes([
           style({ top: '0%', opacity: 0, offset: 0}),
           style({ top: '3%', opacity: 1, offset: 1})
         ]))
       ]),
       transition('middle => bottom', [
-        animate('.6s', keyframes([
+        animate('.5s', keyframes([
           style({ top: '6%', opacity: 0, offset: 0.99 }),
           style({ top: '0%', offset: 1 })
         ]))
@@ -60,21 +59,46 @@ tabState = true;
   }
 
   changeWebsite(name: string) {
-    (<HTMLElement>document.getElementById("website-button")).innerHTML = name;
+    var x = document.getElementsByClassName("language");
+    for (var i = 0; i < x.length; ++i) {
+      (<HTMLElement>x[i]).classList.remove("selected");
+      (<HTMLElement>x[i]).classList.add("not-selected");
+    }
     if (name == "Scratch") {
       (<HTMLInputElement>document.getElementById("language")).value = name;
+      (<HTMLElement>document.getElementById("scratch-dropdown")).classList.add("selected");
+      (<HTMLElement>document.getElementById("scratch-dropdown")).classList.remove("not-selected");
     }
     else if (name == "Trinket" || name == "Repl.it") {
       (<HTMLInputElement>document.getElementById("language")).value = "Python";
+      if (name == "Trinket") {
+        (<HTMLElement>document.getElementById("trinket-dropdown")).classList.add("selected");
+        (<HTMLElement>document.getElementById("trinket-dropdown")).classList.remove("not-selected");
+      }
+      else {
+        (<HTMLElement>document.getElementById("repl-dropdown")).classList.add("selected");
+        (<HTMLElement>document.getElementById("repl-dropdown")).classList.remove("not-selected");
+      }
     }
   }
 
-  submitButtonClickRegular() {
-    //first check that all required inputs are there
-    var platform = (<HTMLElement>document.getElementById("platform-button")).innerHTML;
+  submitGeneral() {
+    var platformElements = document.getElementsByClassName("platform");
+    var platform;
+    for (var x = 0; x < platformElements.length; ++x) {
+      if ((<HTMLElement>platformElements[x]).classList.contains("selected")) {
+        platform = (<HTMLElement>platformElements[x]).innerHTML;
+      }
+    }
     var websiteLink;
     if (platform == "Website") {
-      var website = (<HTMLElement>document.getElementById("website-button")).innerHTML;
+      var websiteElements = document.getElementsByClassName("language");
+      var website;
+      for (var x = 0; x < websiteElements.length; ++x) {
+        if ((<HTMLElement>websiteElements[x]).classList.contains("selected")) {
+          website = (<HTMLElement>websiteElements[x]).innerHTML;
+        }
+      }
       if (website == "Scratch") {
         websiteLink = "www.scratch.mit.edu";
       }
@@ -88,6 +112,12 @@ tabState = true;
     else if (platform == "Local Software") {
       websiteLink = (<HTMLInputElement>document.getElementById("local")).value;
     }
+    return "Date: " + this.format + "\n\nPlatform: " + platform + "\nPlatform name: " + websiteLink;
+  }
+
+  submitButtonClickRegular() {
+    //first check that all required inputs are there
+    var platformStuff = this.submitGeneral();
     var username = (<HTMLInputElement>document.getElementById("username")).value;
     var password = (<HTMLInputElement>document.getElementById("password")).value;
     var lang = (<HTMLInputElement>document.getElementById("language")).value;
@@ -96,7 +126,7 @@ tabState = true;
     var numOfTopics = topicsList.length;
     var challenges = (<HTMLInputElement>document.getElementById("challenges")).value;
     var next = (<HTMLInputElement>document.getElementById("next")).value;
-    var finalText = "Date: " + this.format + "\n\nPlatform: " + platform + "\nPlatform name: " + websiteLink + "\nUsername: " + username + "\nPassword: " + password + "\nLanguage: " + lang + "\n\nNotes: " + notes + "\n\nTopics Covered:";
+    var finalText = platformStuff + "\nUsername: " + username + "\nPassword: " + password + "\nLanguage: " + lang + "\n\nNotes: " + notes + "\n\nTopics Covered:";
     for (let x = 0; x < numOfTopics; ++x) {
       finalText += "\n\t\t•" + topicsList[x].innerHTML;
     }
@@ -105,28 +135,12 @@ tabState = true;
   }
 
   submitButtonClickTrial() {
-    var platform = (<HTMLElement>document.getElementById("platform-button")).innerHTML;
-    var websiteLink;
-    if (platform == "Website") {
-      var website = (<HTMLElement>document.getElementById("website-button")).innerHTML;
-      if (website == "Scratch") {
-        websiteLink = "www.scratch.mit.edu";
-      }
-      else if (website == "Trinket") {
-        websiteLink = "www.trinket.io";
-      }
-      else if (website == "Repl.it") {
-        websiteLink = "www.repl.it";
-      }
-    }
-    else if (platform == "Local Software") {
-      websiteLink = (<HTMLInputElement>document.getElementById("local")).value;
-    }
+    var platformStuff = this.submitGeneral();
     var lang = (<HTMLInputElement>document.getElementById("language")).value;
     var notes = (<HTMLInputElement>document.getElementById("notes")).value;
     var topicsList = (<HTMLElement>document.getElementById("topicsList")).getElementsByTagName('li');
     var numOfTopics = topicsList.length;
-    var finalText = "Date: " + this.format + "\n\nPlatform: " + platform + "\nPlatform name: " + websiteLink + "\nLanguage: " + lang + "\n\nNotes: " + notes + "\n\nTopics Covered:";
+    var finalText = platformStuff + "\nLanguage: " + lang + "\n\nNotes: " + notes + "\n\nTopics Covered:";
     for (let x = 0; x < numOfTopics; ++x) {
       finalText += "\n\t\t•" + topicsList[x].innerHTML;
     }
@@ -156,8 +170,6 @@ tabState = true;
     }
     //reset all elements
     (<HTMLElement>document.getElementById("finish")).innerHTML = "";
-    (<HTMLSelectElement>document.getElementById("platform-button")).innerHTML = "Website";
-    (<HTMLSelectElement>document.getElementById("website-button")).innerHTML = "Scratch";
     (<HTMLInputElement>document.getElementById("username")).value = "";
     (<HTMLInputElement>document.getElementById("password")).value = "";
     (<HTMLInputElement>document.getElementById("language")).value = "";
@@ -211,6 +223,11 @@ tabState = true;
   changePlatform(platformName: string) {
     var web = (<HTMLDivElement>document.getElementById("website-container"));
     var local = (<HTMLElement>document.getElementById("local_group"));
+    var x = document.getElementsByClassName("platform");
+    for (var i = 0; i < x.length; ++i) {
+      (<HTMLElement>x[i]).classList.remove("selected");
+      (<HTMLElement>x[i]).classList.add("not-selected");
+    }
     if (platformName == "Website") {
       web.style.opacity = "1";
       web.style.visibility = "visible";
@@ -218,6 +235,8 @@ tabState = true;
       local.style.opacity = "0";
       local.style.visibility = "hidden";
       local.style.height = "0px";
+      (<HTMLElement>document.getElementById("website-dropdown")).classList.add("selected");
+      (<HTMLElement>document.getElementById("website-dropdown")).classList.remove("not-selected");
     }
     else if (platformName == "Local Software") {
       web.style.opacity = "0";
@@ -226,14 +245,8 @@ tabState = true;
       local.style.opacity = "1";
       local.style.visibility = "visible";
       local.style.height = "auto";
+      (<HTMLElement>document.getElementById("local-dropdown")).classList.add("selected");
+      (<HTMLElement>document.getElementById("local-dropdown")).classList.remove("not-selected");
     }
-    (<HTMLElement>document.getElementById("platform-button")).innerHTML = platformName;
   }
-
-  @HostListener('window:scroll', ['$event'])
-  moveWithScroll(e: Event) {
-    var d = (<HTMLDivElement>document.getElementById("finishDiv"));
-    console.log();
-  }
-
 }
